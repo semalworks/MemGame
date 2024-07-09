@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mem Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+  <!-- Add custom stylesheet here -->
+  <style>
+    .new-body {
+      background-color: rgb(145, 238, 201);
+      margin-top: 25px;
+      margin-left: 2pc;
+      margin-right: 2pc;
+    }
+
+    .main-div {
+      text-align: center;
+      margin-bottom: 3vw;
+      font-size: 6vw;
+      font-weight: 600;
+      color: rgb(255, 0, 255);
+      padding-top: 25px;
+      position: relative;
+    }
+
+    .container {
+        background-color: black;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius:
+          25px;
+        border-width:
+          2px;
+        position: relative;
+      }
+
+    .bigger {
+      font-size: 7rem
+    }
+
+    .multiply {
+      font-size: 7rem;
+      margin-top: 9vw;
+      margin-bottom: 9vw;
+    }
+
+    hr {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      color: black;
+      height: 0px;
+      border-bottom: 0.1em solid black;
+    }
+
+    .ui.button.biggerbtn {
+      font-size: 4rem;
+      margin: 25px 5px 5px 5px; 
+    }
+    .info-hover{
+        display: none;
+      }
+    .trivia{
+      text-align: justify;
+      margin-top: 200px;
+      font-family: /*Inconsolata, monospace;*/ Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+      font-size: 3rem;
+      line-height: 4rem;
+      color:black;
+      display: block;
+    
+    }
+    .disclaimer{
+      margin-top: 30px; 
+      padding-top: 30px;
+      font-size: 2rem; 
+      color:#B74F6F
+    }
+    @media only screen and (min-width: 1000px) {
+
+      .new-body {
+        background-color: rgb(183, 239, 217);
+        margin-top: 20px;
+        margin-left: 20pc;
+        margin-right: 20pc;
+      }
+
+      .main-div {
+        text-align: center;
+        padding-top: 15px;
+        margin-bottom: 1.5vw;
+        font-size: 4vw;
+        font-weight: 300;
+        color: rgb(72, 0, 255);
+        padding: 10px;
+        position: relative;
+        
+      }
+
+      .container {
+        background-color: black;
+        padding: 15px;
+        border-radius:
+          15px;
+        border-width:
+          2px;
+        position: relative;
+      }
+
+      .bigger {
+        font-size: 4vw;
+      }
+
+      .ui.button.biggerbtn {
+        font-size: 1.4rem;
+        /* margin: 5px 5px 5px 5px; */
+      }
+
+      .multiply {
+        font-size: 4vw;
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+        font-weight: 400;
+      }
+
+      hr {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        color: black;
+        height: 0px;
+        border-bottom: 0.1em solid black;
+      }
+      .info-hover{
+        display: block;
+      }
+      .trivia{
+        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif; /*Inconsolata, monospace;*/
+      display: none;
+      margin-top: 50px;
+      font-size:1em;
+      line-height: 1.2em;
+      color: black;
+      background-color: #ADBDFF;
+      border-radius: 15px;
+      border-style: solid;
+      border-color: #3185FC;
+      border-width: 4px;
+      padding: 20px 10px 20px 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      
+    }
+
+    .disclaimer{
+      padding-top: 20px;
+      margin-top: 45px; 
+      font-size: 0.9rem; 
+      color:#B74F6F;
+      font-weight: 800;
+    }
+    }
+  </style>
+</head>
+
+<body class="new-body">
+  <div class="main-div">   M E M G A M E  
+     </div>
+  <div class="container">
+    <div class="ui segment" style="font-size: 42pt">
+      <div id="info-hover" style="float: right; font-size: 0.5em;font-weight: 400; color:rgb(255, 0, 255) "> <i class="attention icon"></i></div>
+      <div style="margin-top: 40px" id="n1" class="label vanish bigger">12</div>
+      <div class="label multiply"> x </div>
+      <div style="margin-top: 40px" id="n2" class="label vanish bigger">12</div>
+      <hr>
+      <div style="margin-top: 40px" id="n3" class="label bigger">answer</div>
+
+    </div>
+    <div class="btnContainer">
+      <button id="check" class="ui  green button  biggerbtn " style="float: right;">
+        Check
+      </button>
+      <button id="next" class="ui  blue button  biggerbtn">
+        Next
+      </button>
+    </div>
+  </div>
+  <div class="trivia" id="div-trivia">
+    The 8085 microprocessor features six general-purpose registers for storing 8-bit data. However, when it comes to the human brain, it is widely believed that average individuals can only hold about 4 items in their working memory simultaneously. Depending on how you mentally perform multiplication, this limit is often put to the test in this simple exercises
+    <p class="disclaimer">DISCLAIMER: As far as I know, there is no scientific evidence suggesting that this actually improves memory.</p>
+  </div>
+  </div>
+  <!-- Write your html code here -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+  <script>
+    let n1 = 0;
+    let n2 = 0;
+
+    function NextPuzzle() {
+      $('.vanish').show();
+      n1 = n2 = 0;
+      while (!(n1 > 12) || ((n1 % 10) < 1)) {
+        n1 = Math.floor(Math.random() * 100);
+      }
+
+      while (!(n2 > 12) || ((n2 % 10) < 1)) {
+        n2 = Math.floor(Math.random() * 100);
+      }
+      $('.vanish').fadeIn(10);
+      $('#n1').text(n1 + '');
+      $('#n2').text(n2 + '');
+      $('#n3').text('???');
+
+
+      //uncomment for fading out numbers
+      $('.vanish').fadeTo(5000, 0, () => {
+        $('.vanish').text('??');
+        $('.vanish').fadeTo(0, 1.0);
+      });
+
+    }
+
+
+    function ShowAnswer() {
+      $('.vanish').fadeTo(0, 1.0);
+      $('#n3').text("" + (n1 * n2));
+      $('#n1').text(n1 + '');
+      $('#n2').text(n2 + '');
+
+    }
+
+    $(document).ready(function () {
+      $("#check").bind("click", ShowAnswer);
+      $("#next").bind("click", NextPuzzle);
+      NextPuzzle();
+
+      const infoLnk = document.getElementById('info-hover');
+      const triviaDiv = document.getElementById('div-trivia');
+
+
+        // Show trivia on hover
+        infoLnk.addEventListener('mouseover', () => {
+            triviaDiv.style.display = 'block';
+        });
+
+        // Hide trivia when not hovering
+        infoLnk.addEventListener('mouseout', () => {
+            triviaDiv.style.display = 'none';
+        });
+
+    });
+  </script>
+</body>
+
+</html>
